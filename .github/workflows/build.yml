@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        base-image: ['debian:buster-slim', ubuntu]
+        base-image: ['debian', ubuntu]
     steps:
     - uses: actions/checkout@master
     - name: Run CI

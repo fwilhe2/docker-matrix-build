@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        base-image: ['debian:buster-slim', ubuntu]
+    steps:
+    - uses: actions/checkout@master
+    - name: Run CI
+      run: |
+        docker build --build-arg=BASE_IMAGE=${{ matrix.base-image }} --tag fwilhe/matrix:latest-${{ matrix.base-image }} .
